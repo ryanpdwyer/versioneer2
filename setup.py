@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
 import sys
 import io
+import imp
 
-import versioneer
+fp, pathname, description = imp.find_module('versioneer')
+
+try:
+    versioneer = imp.load_module('versioneer', fp, pathname, description)
+finally:
+    if fp: fp.close()
+
 versioneer.VCS = 'git'
 versioneer.versionfile_source = 'versioneer2/_version.py'
 versioneer.versionfile_build = 'versioneer2/_version.py'
@@ -16,11 +23,7 @@ except ImportError:
     sys.exit(1)
 
 readme = io.open('README.rst', mode='r', encoding='utf-8').read()
-doclink = """
-Documentation
--------------
 
-The full documentation is at http://versioneer2.rtfd.org."""
 history = io.open('HISTORY.rst', mode='r',
                   encoding='utf-8').read().replace('.. :changelog:', '')
 
@@ -32,7 +35,7 @@ setup(
     name='versioneer2',
     version=versioneer.get_version(),
     description='An updated, simplified version of versioneer"',
-    long_description=readme + '\n\n' + doclink + '\n\n',
+    long_description=readme + '\n\n' + history,
     license='MIT',
     author='Ryan Dwyer',
     author_email='ryanpdwyer@gmail.com',
@@ -46,10 +49,13 @@ setup(
     # Add requirements here. If the requirement is difficult to install,
     # add to docs/conf.py MAGIC_MOCK, and .travis.yml 'conda install ...'
     install_requires=[],
-
     tests_require=['nose'],
     test_suite='nose.collector',
     cmdclass=cmdclass,
+    entry_points="""
+        [console_scripts]
+        versioneer2installer=versioneer2.installer:main
+        """,
     keywords='versioneer2',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
