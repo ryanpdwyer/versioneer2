@@ -2,6 +2,7 @@
 """
 Tests for `versioneer2` module.
 """
+from __future__ import unicode_literals
 import unittest
 import versioneer2
 
