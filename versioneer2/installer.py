@@ -14,7 +14,7 @@ del versioneer2
 def main():
     versioneer_init = codecs.open(file_to_copy, 'r', encoding='utf-8').read()
     # Manually overwrite the version string
-    versioneer_py = versioneer_init.replace(u"""\
+    versioneer_py = versioneer_init.replace("""\
 # Versioneer versioning
 from ._version import get_versions
 __version__ = get_versions()['version']

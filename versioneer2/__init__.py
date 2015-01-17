@@ -264,23 +264,17 @@ The `setup.py versioneer` command adds the following text to your
     __version__ = get_versions()['version']
     del get_versions
 
-## Updating Versioneer
+## Updating Versioneer2
 
 To upgrade your project to a new release of Versioneer, do the following:
 
-* install the new Versioneer (`pip install -U versioneer` or equivalent)
-* re-run `versioneer-installer` in your source tree to replace your copy of
+* install the new versioneer2 (`pip install -U versioneer2` or equivalent)
+* re-run `versioneer2installer` in your source tree to replace your copy of
   `versioneer.py`
 * edit `setup.py`, if necessary, to include any new configuration settings
   indicated by the release notes
 * re-run `setup.py versioneer` to replace `SRC/_version.py`
 * commit any changed files
-
-## License
-
-To make Versioneer easier to embed, all its code is hereby released into the
-public domain. The `_version.py` that it creates is also in the public
-domain.
 
 """
 
