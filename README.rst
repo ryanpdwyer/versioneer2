@@ -8,9 +8,16 @@ versioneer2
 
 An updated, simplified version of versioneer.
 
+Development Note
+----------------
 
-Features
---------
+Since this project uses itself for versioning, when you make a change to the main stript
+ (versioneer2/__init__.py), you should then run the following commands::
 
-* TODO
+    python setup.py install
+    versioneer2installer
+    python setup.py versioneer
+
+
+Then your changes have actually updated both __init__.py and the bundled copy of versioneer. To see the effect of all of your changes, run setup.py install again and test normally.
 
